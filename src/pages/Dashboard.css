@@ -1,118 +1,132 @@
-/* Dashboard.css */
-.dashboard-header {
+.dashboard-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dashboard-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
-  }
-  
-  .about-link {
-    color: #f1c40f;
-    font-weight: bold;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .about-link:hover {
-    color: #d4ac0d;
-    text-decoration: underline;
-  }
-  
-
-.dashboard-container {
-    background-color: #333;
-    min-height: 100vh;
-    padding: 3rem 1rem;
-    color: #f9f9f9;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
   .dashboard-title {
-    text-align: center;
-    color: #f1c40f;
-    margin-bottom: 2rem;
-    font-size: 2rem;
+    font-weight: bold;
+    color: #343a40;
+  }
+  
+  .about-link {
+    text-decoration: none;
+    color: #ffc107;
     font-weight: bold;
   }
   
   .task-input-group {
     display: flex;
-    justify-content: center;
     gap: 10px;
-    margin-bottom: 1.5rem;
+    margin: 20px 0;
   }
   
-  .task-input {
-    padding: 0.75rem 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    width: 60%;
-    font-size: 1rem;
-    color: #333;
-    background-color: #f9f9f9;
-    font-weight: bold;
+  .task-input,
+  .reminder-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
   }
   
   .add-btn {
-    padding: 0.75rem 1.5rem;
-    background-color: #f1c40f;
-    color: #333;
+    background-color: #ffc107;
+    color: white;
     border: none;
-    border-radius: 6px;
-    font-weight: bold;
+    padding: 10px 16px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
   }
   
   .add-btn:hover {
-    background-color: #e1b70e;
+    background-color: #ffc107;
   }
   
   .task-list {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
-    max-width: 600px;
-    margin: 0 auto;
   }
   
   .task-item {
-    background-color: #444;
-    color: #f9f9f9;
-    padding: 1rem;
-    margin-bottom: 0.75rem;
+    background-color: #f8f9fa;
+    padding: 12px;
+    margin-bottom: 10px;
     border-radius: 8px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    flex-direction: column;
+    transition: background-color 0.3s;
   }
   
-  .task-item:hover {
-    background-color: #555;
+  .task-item.task-done {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+  
+  .task-item.task-alert {
+    background-color: #fff3cd;
+    border-left: 6px solid #ffc107;
   }
   
   .task-text {
+    font-weight: bold;
     cursor: pointer;
   }
   
-  .task-done .task-text {
-    text-decoration: line-through;
-    color: #aaa;
+  .task-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .task-time,
+  .reminder-timer {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #495057;
+  }
+  
+  .btn-sm {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .btn-sm.btn-warning {
+    background-color: #ffc107;
+    color: #fafcfd;
+    border-color: rgb(156, 128, 2);
+  }
+  
+  .btn-sm.btn-warning:hover {
+    background-color: #31312f;
   }
   
   .delete-btn {
-    background-color: #9e7f02;
-    color: #fff;
-    border: none;
+    background-color: #dc3545;
+    color: white;
+    padding: 6px 10px;
     border-radius: 6px;
-    padding: 0.4rem 0.8rem;
-    font-size: 0.9rem;
-    font-weight: bold;
+    border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
   }
   
   .delete-btn:hover {
-    background-color: #c0392b;
+    background-color: #c82333;
   }  

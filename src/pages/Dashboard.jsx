@@ -1,15 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './Dashboard.css'; // Import the CSS file
+import './Dashboard.css';
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
   const [input, setInput] = useState('');
+  const [reminderMinutes, setReminderMinutes] = useState('');
 
   const addTask = () => {
     if (input.trim()) {
-      setTasks([...tasks, { text: input, done: false }]);
+      const reminderSeconds = parseInt(reminderMinutes) * 60;
+      const task = {
+        text: input,
+        done: false,
+        createdAt: new Date(),
+        duration: 0,
+        running: false,
+        timer: null,
+        reminder: isNaN(reminderSeconds) ? null : reminderSeconds,
+        remainingTime: isNaN(reminderSeconds) ? null : reminderSeconds,
+        reminderTimer: null,
+        alerted: false,
+      };
+
+      // Set reminder countdown
+      if (!isNaN(reminderSeconds)) {
+        task.reminderTimer = setInterval(() => {
+          setTasks((prev) => {
+            const updated = [...prev];
+            if (updated.length > 0 && updated[updated.length - 1].remainingTime > 0) {
+              updated[updated.length - 1].remainingTime -= 1;
+              if (updated[updated.length - 1].remainingTime <= 0 && !updated[updated.length - 1].alerted) {
+                updated[updated.length - 1].alerted = true;
+                alert(`Reminder: "${updated[updated.length - 1].text}" is due!`);
+              }
+            }
+            return updated;
+          });
+        }, 1000);
+      }
+
+      setTasks((prev) => [...prev, task]);
       setInput('');
+      setReminderMinutes('');
     }
   };
 
@@ -21,7 +54,47 @@ const Dashboard = () => {
 
   const deleteTask = (index) => {
     const updated = tasks.filter((_, i) => i !== index);
+    if (tasks[index].timer) clearInterval(tasks[index].timer);
+    if (tasks[index].reminderTimer) clearInterval(tasks[index].reminderTimer);
     setTasks(updated);
+  };
+
+  const toggleTimer = (index) => {
+    setTasks((prevTasks) => {
+      return prevTasks.map((task, i) => {
+        if (i === index) {
+          if (task.running) {
+            clearInterval(task.timer);
+            return { ...task, running: false, timer: null };
+          } else {
+            const timer = setInterval(() => {
+              setTasks((prev) => {
+                const newTasks = [...prev];
+                newTasks[index].duration += 1;
+                return newTasks;
+              });
+            }, 1000);
+            return { ...task, running: true, timer };
+          }
+        }
+        return task;
+      });
+    });
+  };
+
+  useEffect(() => {
+    return () => {
+      tasks.forEach(task => {
+        if (task.timer) clearInterval(task.timer);
+        if (task.reminderTimer) clearInterval(task.reminderTimer);
+      });
+    };
+  }, [tasks]);
+
+  const formatDuration = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}m ${secs}s`;
   };
 
   return (
@@ -38,6 +111,13 @@ const Dashboard = () => {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Add a task..."
         />
+        <input
+          className="reminder-input"
+          type="number"
+          placeholder="Reminder (mins)"
+          value={reminderMinutes}
+          onChange={(e) => setReminderMinutes(e.target.value)}
+        />
         <button className="add-btn" onClick={addTask}>Add</button>
       </div>
 
@@ -45,7 +125,7 @@ const Dashboard = () => {
         {tasks.map((task, index) => (
           <li
             key={index}
-            className={`task-item ${task.done ? 'task-done' : ''}`}
+            className={`task-item ${task.done ? 'task-done' : ''} ${task.alerted ? 'task-alert' : ''}`}
           >
             <span
               className="task-text"
@@ -53,7 +133,18 @@ const Dashboard = () => {
             >
               {task.text}
             </span>
-            <button className="delete-btn" onClick={() => deleteTask(index)}>Delete</button>
+            <div className="task-controls">
+              <span className="task-time">{formatDuration(task.duration)}</span>
+              {task.reminder !== null && (
+                <span className="reminder-timer">
+                  ⏰ {formatDuration(task.remainingTime)}
+                </span>
+              )}
+              <button className="btn-sm btn-warning" onClick={() => toggleTimer(index)}>
+                {task.running ? 'Pause' : 'Start'} Timer
+              </button>
+              <button className="delete-btn" onClick={() => deleteTask(index)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>
