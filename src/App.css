@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+body {
+  background-color: #0d0e0e;
+}
+
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -40,3 +45,10 @@
 .read-the-docs {
   color: #888;
 }
+body {
+  background: linear-gradient(135deg, #2c3e50, #4ca1af);
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
