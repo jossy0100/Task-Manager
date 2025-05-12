@@ -1,0 +1,109 @@
+/* Background and Layout Styling */
+.signin-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0d0d0d, #343a40);
+    color: #fff;
+  }
+  
+  /* Form Styling */
+  .signin-form {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 420px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Title Styling */
+  .signin-form h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #f1c40f;
+  }
+  
+  /* Input Field Styling */
+  .signin-form .form-control {
+    border-radius: 25px;
+    border: 2px solid #ccc;
+    padding: 15px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Focus Effect on Inputs */
+  .signin-form .form-control:focus {
+    border-color: #f1c40f;
+    box-shadow: 0 0 8px rgba(241, 196, 15, 0.5);
+    background-color: #fff;
+  }
+  
+  /* Button Styling */
+  .signin-form .btn {
+    width: 100%;
+    padding: 15px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    background-color: #f1c40f;
+    color: #fff;
+    border: 2px solid #f1c40f;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* Hover Effect on Button */
+  .signin-form .btn:hover {
+    background-color: #fff;
+    color: #f1c40f;
+    border-color: #f1c40f;
+    transform: translateY(-2px);
+  }
+  
+  /* Link Styling */
+  .signin-form p a {
+    color: #f6f9fa;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .signin-form p a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Add subtle animation on form load */
+  .signin-form {
+    animation: fadeIn 1s ease-out;
+  }
+  
+  /* FadeIn Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 576px) {
+    .signin-form {
+      padding: 25px;
+    }
+  
+    .signin-form h2 {
+      font-size: 1.5rem;
+    }
+  }

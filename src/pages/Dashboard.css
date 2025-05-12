@@ -1,0 +1,118 @@
+/* Dashboard.css */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .about-link {
+    color: #f1c40f;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .about-link:hover {
+    color: #d4ac0d;
+    text-decoration: underline;
+  }
+  
+
+.dashboard-container {
+    background-color: #333;
+    min-height: 100vh;
+    padding: 3rem 1rem;
+    color: #f9f9f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .dashboard-title {
+    text-align: center;
+    color: #f1c40f;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .task-input-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .task-input {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 60%;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f9f9f9;
+    font-weight: bold;
+  }
+  
+  .add-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: #f1c40f;
+    color: #333;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-btn:hover {
+    background-color: #e1b70e;
+  }
+  
+  .task-list {
+    list-style-type: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .task-item {
+    background-color: #444;
+    color: #f9f9f9;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .task-item:hover {
+    background-color: #555;
+  }
+  
+  .task-text {
+    cursor: pointer;
+  }
+  
+  .task-done .task-text {
+    text-decoration: line-through;
+    color: #aaa;
+  }
+  
+  .delete-btn {
+    background-color: #9e7f02;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c0392b;
+  }  

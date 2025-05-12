@@ -13,10 +13,11 @@
 
 // export default Footer;
 import React from 'react';
+import './Footer.css'; // Import the CSS file
 
 const Footer = () => (
-  <footer className="mt-auto bg-white text-black text-center py-3">
-    <p className="mb-0">&copy; {new Date().getFullYear()} Task Manager App. Built with ❤️ and Money.</p>
+  <footer className="custom-footer">
+    <p>&copy; {new Date().getFullYear()} Task Manager App. Built with ❤️ and Money.</p>
   </footer>
 );
 

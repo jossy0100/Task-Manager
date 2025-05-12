@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './Dashboard.css'; // Import the CSS file
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
@@ -23,23 +25,35 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="container py-5">
-      <h2 className="text-center mb-4">My Task Manager</h2>
-      <div className="input-group mb-3">
+    <div className="dashboard-container">
+      <div className="dashboard-header">
+        <h2 className="dashboard-title">My Task Manager</h2>
+        <Link to="/about" className="about-link">About</Link>
+      </div>
+
+      <div className="task-input-group">
         <input
-          className="form-control"
+          className="task-input"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Add a task..."
         />
-        <button className="btn btn-primary" onClick={addTask}>Add</button>
+        <button className="add-btn" onClick={addTask}>Add</button>
       </div>
 
-      <ul className="list-group">
+      <ul className="task-list">
         {tasks.map((task, index) => (
-          <li key={index} className={`list-group-item d-flex justify-content-between ${task.done ? 'text-decoration-line-through' : ''}`}>
-            <span onClick={() => toggleDone(index)} style={{ cursor: 'pointer' }}>{task.text}</span>
-            <button className="btn btn-sm btn-danger" onClick={() => deleteTask(index)}>Delete</button>
+          <li
+            key={index}
+            className={`task-item ${task.done ? 'task-done' : ''}`}
+          >
+            <span
+              className="task-text"
+              onClick={() => toggleDone(index)}
+            >
+              {task.text}
+            </span>
+            <button className="delete-btn" onClick={() => deleteTask(index)}>Delete</button>
           </li>
         ))}
       </ul>
