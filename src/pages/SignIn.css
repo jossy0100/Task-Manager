@@ -84,6 +84,37 @@
   .signin-form {
     animation: fadeIn 1s ease-out;
   }
+
+  .options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+
+  .options .remember {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #333;
+  }
+
+  .options .remember input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #0253c5d2;
+  }
+
+  .options .forgot {
+    color: #0253c5d2;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .options .forget:hover {
+    text-decoration: underline;
+  }
   
   /* FadeIn Animation */
   @keyframes fadeIn {

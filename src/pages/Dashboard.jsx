@@ -23,7 +23,6 @@ const Dashboard = () => {
         alerted: false,
       };
 
-      // Set reminder countdown
       if (!isNaN(reminderSeconds)) {
         task.reminderTimer = setInterval(() => {
           setTasks((prev) => {
@@ -103,7 +102,7 @@ const Dashboard = () => {
         <h2 className="dashboard-title">My Task Manager</h2>
         <Link to="/about" className="about-link">About</Link>
       </div>
-
+      
       <div className="task-input-group">
         <input
           className="task-input"

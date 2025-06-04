@@ -40,6 +40,20 @@ const SignIn = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+
+           <div className='options'>
+            <label className='remember'>
+              <input
+                  type='checkbox'
+                  name='remember'
+                  checked={FormData.remember}
+                  onChange={handleChange}
+              />
+              Remember
+            </label>
+            <a href='#' className='forget'>Forget Password</a>
+          </div>
+
         </div>
         <button type="submit" className="btn btn-outline-success">
           Login
